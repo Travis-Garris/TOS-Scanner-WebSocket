@@ -134,7 +134,7 @@ def simulate_range_bar(symbol, close_price):
 
 # Websocket
 def on_message(ws, message):
-    print(message)
+    # print(message)
     try:
         events = json.loads(message)
         for event in events:
