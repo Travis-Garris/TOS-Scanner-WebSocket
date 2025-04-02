@@ -6,6 +6,7 @@ import threading
 import time
 import numpy as np
 from collections import defaultdict, deque
+import os
 
 app = Flask(__name__)
 API_KEY = "j8buZA_wTOJyoBAE7xYGm1SI4DtjHhrt"
@@ -244,5 +245,6 @@ def index():
 
 if __name__ == "__main__":
     run_ws_thread()
+    port = int(os.environ.get("PORT", 5000))
     time.sleep(10)
-    app.run(debug=True, use_reloader=True)
+    app.run(host="0.0.0.0", port=port, debug=True, use_reloader=True)
