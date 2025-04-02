@@ -112,6 +112,7 @@ def simulate_range_bar(symbol, close_price):
         range_bars[symbol] = bar
 
 def on_message(ws, message):
+    print(message)
     try:
         events = json.loads(message)
         for event in events:
@@ -161,7 +162,7 @@ if __name__ == "__main__":
     run_ws_thread()
 
     # Simulate main app doing other work
-    time.sleep(30)  # wait for some bars
+    time.sleep(10)  # wait for some bars
 
     filters = [
         {

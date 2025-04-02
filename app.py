@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from connect_websocket import run_scan  # assuming you have scanner logic in scanner.py
+# from connect_websocket import run_scan  # assuming you have scanner logic in scanner.py
 import websocket
 import json
 import threading
@@ -134,6 +134,7 @@ def simulate_range_bar(symbol, close_price):
 
 # Websocket
 def on_message(ws, message):
+    print(message)
     try:
         events = json.loads(message)
         for event in events:
@@ -247,4 +248,5 @@ if __name__ == "__main__":
     run_ws_thread()
     port = int(os.environ.get("PORT", 5000))
     time.sleep(10)
-    app.run(host="0.0.0.0", port=port, debug=True, use_reloader=True)
+    app.run(host="0.0.0.0", port=port, debug=True, use_reloader=False)
+    # app.run(debug=True, use_reloader=False)
